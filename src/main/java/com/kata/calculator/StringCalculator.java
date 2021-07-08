@@ -12,42 +12,42 @@ public class StringCalculator {
     String CUSTOM_DELIMITER = "";
 
     public int add(String input) {
-        List<String> negativeNumbers = new ArrayList<String>();
+        List<String> arguments = new ArrayList();
         if (input.isEmpty())
             return 0;
-        if(isCustomerDelimiterPresent(input.split("\n")[0])){
+
+        if (isCustomerDelimiterPresent(input.split("\n")[0])) {
             String delimiterInput = input.split("\n")[0];
             CUSTOM_DELIMITER = delimiterInput
-                    .replace("//","")
-                    .replace("]["," ")
-                    .replace("[","")
-                    .replace("]","")
-                    .replace(" ",DELIMITER_COMBINER);;
-            return Arrays.stream(
-                    input.split("\n")[1].split(CUSTOM_DELIMITER)
-            ).map(item -> {
-                validateNumber(Integer.parseInt(item));
-                return item;
-            }).mapToInt(Integer::parseInt).sum();
+                    .replace("//", "")
+                    .replace("][", " ")
+                    .replace("[", "")
+                    .replace("]", "")
+                    .replace(" ", DELIMITER_COMBINER);
+            arguments = Arrays.asList(input.split("\n")[1].split(CUSTOM_DELIMITER));
+            checkForNegativeNumber(arguments);
+            return arguments.stream().mapToInt(Integer::parseInt).sum();
         }
-
-        return Arrays.stream(
-                input.split(DEFAULT_DELIMITER + DELIMITER_COMBINER + NEW_LINE_DELIMITER)
-        ).map(item -> {
-            validateNumber(Integer.parseInt(item));
-            return item;
-        }).mapToInt(Integer::parseInt).sum();
+        arguments = Arrays.asList(input.split(DEFAULT_DELIMITER + DELIMITER_COMBINER + NEW_LINE_DELIMITER));
+        checkForNegativeNumber(arguments);
+        return arguments.stream().mapToInt(Integer::parseInt).sum();
     }
 
-    private boolean isCustomerDelimiterPresent(String input){
-        if(input.contains("//") && input.contains("[") && input.contains("]"))
+    private void checkForNegativeNumber(List<String> arguments) {
+        List<String> negativeNumbers = new ArrayList();
+        for (String argument : arguments) {
+            if (Integer.parseInt(argument) < 0)
+                negativeNumbers.add(argument);
+        }
+        if (negativeNumbers.size() > 0) {
+            throw new IllegalArgumentException(
+                    "Negative number not allowed " + String.join(" ", negativeNumbers));
+        }
+    }
+
+    private boolean isCustomerDelimiterPresent(String input) {
+        if (input.contains("//") && input.contains("[") && input.contains("]"))
             return true;
         return false;
-    }
-
-    private void validateNumber(int number) {
-        if(number < 0)
-            throw new IllegalArgumentException(
-                    "Negative number not allowed " + number);
     }
 }

@@ -54,4 +54,13 @@ class StringCalculatorTest {
             assertEquals("Negative number not allowed -5", e.getMessage());
         }
     }
+
+    @Test
+    public void shouldThrowExceptionForAllNegativeNumbersInInput() {
+        try {
+            stringCalculator.add("2,-5,3,-6");
+        }catch (IllegalArgumentException e){
+            assertEquals("Negative number not allowed -5 -6", e.getMessage());
+        }
+    }
 }
