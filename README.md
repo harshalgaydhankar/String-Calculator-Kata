@@ -10,4 +10,4 @@ Run `gradle build`
 
 Run `gradle test`
 
-Then, after executing the tests, you can watch the test result on [test report page](test-results.md).
+Then, after executing the tests, you can watch the test result on [test report page](test-results.png).
