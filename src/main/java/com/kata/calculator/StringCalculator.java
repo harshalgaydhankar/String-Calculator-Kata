@@ -14,7 +14,12 @@ public class StringCalculator {
             return 0;
         if(isCustomerDelimiterPresent(input.split("\n")[0])){
             String delimiterInput = input.split("\n")[0];
-            CUSTOM_DELIMITER = delimiterInput.replace("//","").replace("[","").replace("]","");
+            CUSTOM_DELIMITER = delimiterInput
+                    .replace("//","")
+                    .replace("]["," ")
+                    .replace("[","")
+                    .replace("]","")
+                    .replace(" ",DELIMITER_COMBINER);;
             return Arrays.stream(
                     input.split("\n")[1].split(CUSTOM_DELIMITER)
             ).mapToInt(Integer::parseInt).sum();

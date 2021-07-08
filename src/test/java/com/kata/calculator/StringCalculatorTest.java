@@ -39,4 +39,9 @@ class StringCalculatorTest {
     public void shouldReturnSumOfMoreNumbersProvidedUsingCustomDelimiterPresentInInput() {
         assertEquals(10, stringCalculator.add("//[-]\n5-5"));
     }
+
+    @Test
+    public void shouldReturnSumOfMoreNumbersProvidedUsingMultipleCustomDelimiterPresentInInput() {
+        assertEquals(12, stringCalculator.add("//[-][;]\n5-5;2"));
+    }
 }
