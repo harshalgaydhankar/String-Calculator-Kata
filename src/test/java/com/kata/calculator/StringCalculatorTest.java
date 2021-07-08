@@ -27,4 +27,9 @@ class StringCalculatorTest {
     public void shouldReturnSumOfMoreNumbersProvidedUsingDefaultDelimiter() {
         assertEquals(25, stringCalculator.add("1,3,5,7,9"));
     }
+
+    @Test
+    public void shouldReturnSumOfMoreNumbersProvidedUsingDefaultDelimiterAndNewLineDelimiter() {
+        assertEquals(12, stringCalculator.add("2\n5,5"));
+    }
 }
