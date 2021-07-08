@@ -80,7 +80,17 @@ class StringCalculatorTest {
     }
 
     @Test
-    public void shouldReturnSumOfMoreNumbersProvidedUsingCustomDelimiterWhoseLengthIsGreaterThanZero() {
+    public void shouldReturnSumOfMoreNumbersProvidedUsingCustomDelimiterWhoseLengthIsGreaterThanOneChar() {
         assertEquals(10, stringCalculator.add("//[;;]\n5;;5"));
+    }
+
+    @Test
+    public void shouldReturnSumOfMoreNumbersProvidedUsingMultipleCustomDelimiters() {
+        assertEquals(15, stringCalculator.add("//[;][%]\n5;5%5"));
+    }
+
+    @Test
+    public void shouldReturnSumOfMoreNumbersProvidedUsingMultipleCustomDelimitersWhoseLengthIsGreaterThanOneChar() {
+        assertEquals(15, stringCalculator.add("//[;;][%%]\n5;;5%%5"));
     }
 }
