@@ -78,4 +78,9 @@ class StringCalculatorTest {
     public void shouldReturnSumOfNumbersWithIgnoringNumbersGreaterThan1000() {
         assertEquals(2, stringCalculator.add("2,1001"));
     }
+
+    @Test
+    public void shouldReturnSumOfMoreNumbersProvidedUsingCustomDelimiterWhoseLengthIsGreaterThanZero() {
+        assertEquals(10, stringCalculator.add("//[;;]\n5;;5"));
+    }
 }
