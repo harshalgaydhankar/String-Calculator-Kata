@@ -2,8 +2,6 @@ package com.kata.calculator;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,5 +60,10 @@ class StringCalculatorTest {
         }catch (IllegalArgumentException e){
             assertEquals("Negative number not allowed -5 -6", e.getMessage());
         }
+    }
+
+    @Test
+    public void shouldReturnCountOfNumberOfTimesAddCalled() {
+        assertEquals(7, StringCalculator.getCalledCount());
     }
 }

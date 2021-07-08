@@ -6,13 +6,15 @@ import java.util.List;
 
 public class StringCalculator {
 
-    String DEFAULT_DELIMITER = ",";
-    String NEW_LINE_DELIMITER = "\n";
-    String DELIMITER_COMBINER = "|";
-    String CUSTOM_DELIMITER = "";
+    private String DEFAULT_DELIMITER = ",";
+    private String NEW_LINE_DELIMITER = "\n";
+    private String DELIMITER_COMBINER = "|";
+    private String CUSTOM_DELIMITER = "";
+    private static int calledCount = 0;
 
     public int add(String input) {
         List<String> arguments = new ArrayList();
+        calledCount ++;
         if (input.isEmpty())
             return 0;
 
@@ -49,5 +51,9 @@ public class StringCalculator {
         if (input.contains("//") && input.contains("[") && input.contains("]"))
             return true;
         return false;
+    }
+
+    public static int getCalledCount() {
+        return calledCount;
     }
 }
