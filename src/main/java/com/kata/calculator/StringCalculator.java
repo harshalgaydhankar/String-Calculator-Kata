@@ -28,11 +28,15 @@ public class StringCalculator {
                     .replace(" ", DELIMITER_COMBINER);
             arguments = Arrays.asList(input.split("\n")[1].split(CUSTOM_DELIMITER));
             checkForNegativeNumber(arguments);
-            return arguments.stream().mapToInt(Integer::parseInt).sum();
+            return arguments.stream()
+                    .filter((item) -> Integer.parseInt(item)<= 1000)
+                    .mapToInt(Integer::parseInt).sum();
         }
         arguments = Arrays.asList(input.split(DEFAULT_DELIMITER + DELIMITER_COMBINER + NEW_LINE_DELIMITER));
         checkForNegativeNumber(arguments);
-        return arguments.stream().mapToInt(Integer::parseInt).sum();
+        return arguments.stream()
+                .filter((item) -> Integer.parseInt(item)<= 1000)
+                .mapToInt(Integer::parseInt).sum();
     }
 
     private void checkForNegativeNumber(List<String> arguments) {
