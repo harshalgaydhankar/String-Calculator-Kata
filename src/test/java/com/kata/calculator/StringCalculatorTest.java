@@ -2,6 +2,8 @@ package com.kata.calculator;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -31,5 +33,10 @@ class StringCalculatorTest {
     @Test
     public void shouldReturnSumOfMoreNumbersProvidedUsingDefaultDelimiterAndNewLineDelimiter() {
         assertEquals(12, stringCalculator.add("2\n5,5"));
+    }
+
+    @Test
+    public void shouldReturnSumOfMoreNumbersProvidedUsingCustomDelimiterPresentInInput() {
+        assertEquals(10, stringCalculator.add("//[-]\n5-5"));
     }
 }
