@@ -3,6 +3,7 @@ package com.kata.calculator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +44,14 @@ class StringCalculatorTest {
     @Test
     public void shouldReturnSumOfMoreNumbersProvidedUsingMultipleCustomDelimiterPresentInInput() {
         assertEquals(12, stringCalculator.add("//[-][;]\n5-5;2"));
+    }
+
+    @Test
+    public void shouldThrowExceptionIfNegativeNumberIsPresent() {
+        try {
+            stringCalculator.add("2,-5");
+        }catch (IllegalArgumentException e){
+            assertEquals("Negative number not allowed -5", e.getMessage());
+        }
     }
 }
